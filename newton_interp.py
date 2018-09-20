@@ -10,6 +10,9 @@
                                     f(x*) = g(x*) = x* = 0.
 
                                         (Plot Results)
+                                        
+    TODO: use chebyshev nodes
+
     L.J. Brown
     Math5315 @ SMU
     Fall 2018
