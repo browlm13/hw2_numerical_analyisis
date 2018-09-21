@@ -17,11 +17,11 @@ from picard import *
 
 # general parameters for all tests
 maxit = 50
-Satols = np.array([1e-12, 1e-12, 1e-12])
-Srtols = np.array([1e-2, 1e-4, 1e-6])
-Ratols = np.array([1e-16, 1e-16, 1e-16])
-Rrtols = np.array([1e-6, 1e-8, 1e-10])
-ntols = 3
+Satols = np.array([1e-6])
+Srtols = np.array([1e-6])
+Ratols = np.array([1e-10])
+Rrtols = np.array([1e-10])
+ntols = len(Satols)
 
 # Testing the performance of Newton’s method and the Picard iteration
 # on the root-finding problem defined in question 3.
