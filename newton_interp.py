@@ -7,10 +7,10 @@
         Construct a newton interpolating polynomial for f(x) using linspaced data points for nodes.
         Where f(x*) = 0 is the root finding form of the fixed point problem function g(x*) = x(*).
 
-                                    f(x*) = g(x*) = x* = 0.
+                                    f(x*) = g(x*) - x* = 0.
 
                                         (Plot Results)
-                                        
+
     TODO: use chebyshev nodes
 
     L.J. Brown
@@ -21,9 +21,10 @@
 __filename__ = "newton_interp.py"
 __author__ = "L.J. Brown"
 
+# external libraries
 import numpy as np
 
-def coef(x, y):
+def coeffients(x, y):
     """ 
         Computes and returns the coeffients of the interpolating polynomial of degree len(x).
         refrence sources: ['https://stackoverflow.com/questions/14823891/newton-s-interpolating-polynomial-python']
@@ -88,7 +89,7 @@ def testing_fixed_point_newton_interp(fixed_point_functions, n, m=400):
         y = f(x)
 
         # compute coefficients of interpolating polynomial
-        c = coef(x,y)
+        c = coeffients(x,y)
 
         # evaluate actual function points for graph
         ax = np.linspace(-1,1,m)
