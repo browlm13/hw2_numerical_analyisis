@@ -62,9 +62,9 @@ def get_fp_iteration_display_points(Gfun, x0, atol, rtol, maxits):
 
 		s = xs[-1] - Gfun(xs[-1])
 		if (abs(s) < atol + rtol*s):
-			return xs, ys, guesses, i, True # return number of iterations and wether or not there was convergence
+			return xs, ys, guesses, i+1, True # return number of iterations and wether or not there was convergence
 
-	return xs, ys, guesses, i, False #  return number of iterations and wether or not there was convergence
+	return xs, ys, guesses, i+1, False #  return number of iterations and wether or not there was convergence
 
 def get_aa_iteration_display_points(Gfun, x0, atol, rtol, maxits):
 
@@ -95,9 +95,9 @@ def get_aa_iteration_display_points(Gfun, x0, atol, rtol, maxits):
 		guesses += [x]
 
 		if (abs(s) < atol + rtol*s):
-			return xs, ys, guesses, i, True  # return number of iterations and wether or not there was convergence
+			return xs, ys, guesses, i+1, True  # return number of iterations and wether or not there was convergence
 
-	return xs, ys, guesses, i, False  # return number of iterations and wether or not there was convergence
+	return xs, ys, guesses, i+1, False  # return number of iterations and wether or not there was convergence
 
 
 def plot_function(Gfun, latex, x0, domain, num_points, axsi, title):
@@ -128,14 +128,14 @@ def plot_iterations(axsi, xs, ys, guesses, its, convergence):
 
 	axsi.plot(xs, ys, color='m', marker=None, linestyle='dashed', linewidth=0.5)
 
-	text = "Convergence"
+	text = "Convergence (iter:%s)" % its
 	text_color = "g"
 	if not convergence:
-		text = "No Convergence"
+		text = "No Convergence (iter:%s)" % its
 		text_color = "r"
 
 	ylim = axsi.get_ylim()
-	axsi.text(0, ylim[0],text, color=text_color, fontsize=12, ha='center', va='bottom', alpha=0.5)
+	axsi.text(0, ylim[0],text, color=text_color, fontsize=8, ha='center', va='bottom', alpha=0.8)
 
 	cm = plt.get_cmap("hot") 
 	cNorm = colors.Normalize(vmin=0, vmax=len(guesses))
@@ -279,4 +279,9 @@ if "__main__" in __name__:
 			error = interp_representation_error(Gfun, x_final)
 			logger.info("\n\n[Method 2]: \nFinal fixed point target error using acceleration acceleration.\n \
 				\n\tFunction name: %s, \n\n\t\t |Gfun(x) - x| = %s.\n" % (name, error))
+
+	# Analysis
+	#logger.info("\n\n.\n \
+	#\n\tFunction name: %s, \n\n\t\t |Gfun(x) - x| = %s.\n")
+
 
